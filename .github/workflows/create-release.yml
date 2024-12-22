@@ -52,7 +52,7 @@ jobs:
         CHANNEL: html
         ITCH_GAME: drift-pirates
         ITCH_USER: fiascothecat
-        PACKAGE: drift-pirates.zip
+        PACKAGE: Web.zip
         VERSION: ${{ steps.download-html.outputs.version }}
     env:
       GITHUB_TOKEN: ${{ secrets.GH_CREDENTIALS }}
