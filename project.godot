@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*res://Services/event_bus.gd"
+Constants="*res://Services/constants.gd"

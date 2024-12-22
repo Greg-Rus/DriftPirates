@@ -1,7 +1,7 @@
 class_name Grid
 extends Node2D
-@export var grid_width = 8
-@export var grid_height = 8
+@export var grid_width = 9
+@export var grid_height = 9
 @export var tile_size = 100
 @export var tile_scale_factor = 0.5
 @onready var tileSprite = preload("res://Scenes/grid_tile.tscn")
@@ -9,7 +9,6 @@ extends Node2D
 var grid = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-		
 	spawn_grid_visuals()
 	
 func update_unit_positions():
@@ -51,6 +50,7 @@ func move_unit(current_position: Vector2, next_position: Vector2):
 func set_unit_at_grid_position(unit: Unit, grid_position: Vector2):
 	grid[grid_position] = unit
 	add_child(unit)
+	unit.grid_position = grid_position
 	unit.position = get_grid_to_local_position(grid_position)
 	
 func wrap_position(position: Vector2):
