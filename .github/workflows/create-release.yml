@@ -1,24 +1,23 @@
-on:
+on: 
   push:
-    branches:
-      - release
-
+    tags:
+      - "v*"
 jobs:
   export_game:
     # Always use ubuntu-latest for this action
     runs-on: ubuntu-latest
     permissions: write-all
     # Job name, can be anything
-    name: Export game to Github
+    name: Export and Create Release
     steps:
-      # Always include the checkout step so that
-      # your project is available for Godot to export
-      - name: checkout
+        # Always include the checkout step so that
+        # your project is available for Godot to export
+        - name: checkout
         uses: actions/checkout@v4
         # Ensure that you get the entire project history
         with:
           fetch-depth: 0
-      - name: create game release
+        - name: Godot Export
         # Use latest version (see releases for all versions)
         uses: firebelley/godot-export@v6.0.0
         with:
@@ -29,6 +28,13 @@ jobs:
           # set this either to . or your game path, e.g. ./godot in case
           # your game is within a sub-directory
           relative_project_path: .
+        - name: create release
+          uses: ncipollo/release-action@v1.14.0
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            generateReleaseNotes: true
+            tag: ${{ github.ref_name }}
+            artifacts: ${{ steps.export.outputs.archive_directory }}/*
         env:
           GITHUB_TOKEN: ${{ secrets.GH_CREDENTIALS }}
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
