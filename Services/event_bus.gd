@@ -1,0 +1,8 @@
+extends Node
+
+signal On_Turn_Clockwise
+signal On_Turn_Counter_Clockwise
+signal On_Fire_Right
+signal On_Fire_Left
+signal On_Thruster
+signal On_Skip_Turn

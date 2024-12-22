@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://jss0lepvs2ar"]
+
+[ext_resource type="Texture2D" uid="uid://cm8118q5t7u3h" path="res://Art/glassPanel_corners.png" id="1_8ptbg"]
+
+[node name="GridTile" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.407843)
+texture = ExtResource("1_8ptbg")
